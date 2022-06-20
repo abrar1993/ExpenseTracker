@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpenses/NewExpense';
 
@@ -32,20 +32,6 @@ const App=()=> {
   
 const [expenses,setExpenses]=useState(DUMMY_EXPENSE);
 
-useEffect(()=>{
-  fetch('https://techgun.website/sample/api/read.php').then(
-      response => {
-          return response.json();
-      }
-  ).then(
-      data => {
-          // console.log(data);
-          setExpenses(data);
-      }
-  );
-
-
-},[]);
 const addExpenseHandler=(expense)=>{
   const updatedExpense=[expense,...expenses];
   setExpenses(updatedExpense);
